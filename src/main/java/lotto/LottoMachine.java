@@ -30,15 +30,27 @@ public class LottoMachine {
 
 	public void getResult() {
 		String[] inputWinningNum = InputView.enterWinningNum();
+		int bonusBall = InputView.enterBonusBall();
+
 		new LottoTicket(inputWinningNum); // 범위 제대로 들어가고 겹치지도 않았고
+		new LottoBall(bonusBall);
+
+		makeWinningNum(inputWinningNum);
+		for (LottoTicket lottoTicket : lottoTickets) {
+			int result = lottoTicket.compareWinningNum(winningNum);
+			System.out.println(lottoTicket.toString()+"결과 -> "+result);
+			if (result == 5) {
+				if (lottoTicket.hasBonusBall(bonusBall)) {
+					System.out.println("2등했네");
+				}
+			}
+		}
+	}
+
+	private void makeWinningNum(String[] inputWinningNum) {
 		for (String s : inputWinningNum) {
 			int eachDigitWinningNum = Integer.parseInt(s);
 			winningNum.add(eachDigitWinningNum);
 		}
-		for (LottoTicket lottoTicket : lottoTickets) {
-			int result = lottoTicket.compareWinningNum(winningNum);
-			System.out.println(lottoTicket.toString()+"결과 -> "+result);
-		}
-		int bonusBall = InputView.enterBonusBall();
 	}
 }

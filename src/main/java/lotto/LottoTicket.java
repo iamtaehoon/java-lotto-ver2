@@ -74,4 +74,11 @@ public class LottoTicket {
 		}
 		return result;
 	}
+
+	public boolean hasBonusBall(int bonusBall) {
+		return lottoTicket.stream()
+			.filter(eachDigitLotto -> eachDigitLotto.toString().equals(Integer.toString(bonusBall)))
+			.findAny()
+			.isPresent();
+	}
 }
