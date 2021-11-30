@@ -35,12 +35,8 @@ public class LottoMachine {
 		makeWinningNum(inputWinningNum);
 		for (LottoTicket lottoTicket : lottoTickets) {
 			int result = lottoTicket.compareWinningNum(winningNum);
-			System.out.println(lottoTicket.toString()+"결과 -> "+result);
-			if (result == 5) {
-				if (lottoTicket.hasBonusBall(bonusBall)) {
-					System.out.println("2등했네");
-				}
-			}
+			boolean matchBonusBall = lottoTicket.hasBonusBall(bonusBall);
+			Rank rank = Rank.valueOf(result, matchBonusBall);
 		}
 	}
 
