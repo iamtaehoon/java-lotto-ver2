@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import lotto.LottoTicket;
@@ -17,16 +18,15 @@ public class OutPutView {
 	public static void getResult(HashMap<Rank, Integer> rankOfResult) {
 		System.out.println("당첨 통계\n"
 			+ "---------");
-		System.out.println(String.format("%d개 일치 (%d원)- %d개", Rank.FIFTH.getHit(), Rank.FIFTH.getReward(),
-			rankOfResult.get(Rank.FIFTH)));
-		System.out.println(String.format("%d개 일치 (%d원)- %d개", Rank.FOURTH.getHit(), Rank.FOURTH.getReward(),
-			rankOfResult.get(Rank.FOURTH)));
-		System.out.println(String.format("%d개 일치 (%d원)- %d개", Rank.THIRD.getHit(), Rank.THIRD.getReward(),
-			rankOfResult.get(Rank.THIRD)));
-		System.out.println(String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", Rank.SECOND.getHit(), Rank.SECOND.getReward(),
-			rankOfResult.get(Rank.SECOND)));
-		System.out.println(String.format("%d개 일치 (%d원)- %d개", Rank.FIRST.getHit(), Rank.FIRST.getReward(),
-			rankOfResult.get(Rank.FIRST)));
+		// 스트림을 반대로 돌림. 근데 Lose는 포함하면 안됨. -> arrayList로 바꾸고 Collection.reverse 근데 그냥 Rank를 뒤집을래
+		// 2등인 경우에만 양식을 다르게 하는 로직이 필요함.
+		Arrays.stream(Rank.values())
+			.filter(rankLevel -> !rankLevel.equals(Rank.LOSE))
+			.forEach(rankLevel -> System.out.println(
+				String.format("%d개 일치 (%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
+					rankOfResult.get(rankLevel))));
+		// System.out.println(String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", Rank.SECOND.getHit(), Rank.SECOND.getReward(),
+		// 	rankOfResult.get(Rank.SECOND)));
 
 	}
 }
