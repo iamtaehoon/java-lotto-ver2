@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+
 import view.InputView;
 
 public class Player {
@@ -8,12 +10,15 @@ public class Player {
 	private int inputMoney;
 	private int totalLottoCnt;
 	private int manualLottoCnt;
+	private ArrayList<LottoTicket> lottoTickets;
+	private LottoMachine lottoMachine = new LottoMachine(lottoTickets);
 
 	public void playLotto() {
 		inputMoney = InputView.putMoney();
 		totalLottoCnt = inputMoney / LOTTO_PRICE;
 		enterManualLottoCnt();
-		InputView.enterEachManualLottoTicket(manualLottoCnt);
+		lottoTickets = InputView.enterEachManualLottoTicket(manualLottoCnt);
+
 	}
 
 	private void enterManualLottoCnt() {

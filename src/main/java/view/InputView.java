@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -32,11 +33,14 @@ public class InputView {
 		return manualLottoCnt;
 	}
 
-	public static void enterEachManualLottoTicket(int manualLottoCnt) {
+	public static ArrayList<LottoTicket> enterEachManualLottoTicket(int manualLottoCnt) {
+		ArrayList<LottoTicket> tickets = new ArrayList<>();
 		System.out.println("수동으로 구매할 번호를 입력해 주세요.");
 		for (int i = 0; i < manualLottoCnt; i++) {
 			String[] eachLottoNumbers = sc.nextLine().split(", ");
 			LottoTicket lottoTicket = new LottoTicket(eachLottoNumbers);
+			tickets.add(lottoTicket);
 		}
+		return tickets;
 	}
 }
