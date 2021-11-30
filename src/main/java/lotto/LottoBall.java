@@ -23,7 +23,7 @@ public class LottoBall implements Comparable<LottoBall> {
 	public int compareTo(LottoBall lottoBall) {
 		return this.lottoBallNumber - lottoBall.lottoBallNumber;
 	}
-	
+
 	public int seeBallNum() {
 		return lottoBallNumber;
 	}
