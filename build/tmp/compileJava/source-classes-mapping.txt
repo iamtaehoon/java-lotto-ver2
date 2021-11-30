@@ -1,2 +1,8 @@
-Application.java
- Application
+lotto/Application.java
+ lotto.Application
+lotto/Player.java
+ lotto.Player
+lotto/LottoTicket.java
+ lotto.LottoTicket
+view/InputView.java
+ view.InputView
