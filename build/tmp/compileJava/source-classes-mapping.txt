@@ -2,6 +2,8 @@ lotto/Application.java
  lotto.Application
 lotto/Player.java
  lotto.Player
+lotto/LottoBall.java
+ lotto.LottoBall
 lotto/LottoTicket.java
  lotto.LottoTicket
 view/InputView.java

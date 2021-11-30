@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lotto.LottoBallTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-30T06:23:23" hostname="gimtaehun-ui-MacBookPro.local" time="0.023">
+  <properties/>
+  <testcase name="1보다 작은 값이 공의 번호로 주어지면 IllegalArgumentException을 낸다." classname="lotto.LottoBallTest" time="0.017"/>
+  <testcase name="로또 공이 1~45 사이의 숫자가 나온 경우 정상적으로 만들어진다." classname="lotto.LottoBallTest" time="0.001"/>
+  <testcase name="45보다 큰 값이 공의 번호로 주어지면 IllegalArgumentException을 낸다." classname="lotto.LottoBallTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
