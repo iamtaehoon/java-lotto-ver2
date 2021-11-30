@@ -52,7 +52,7 @@ public class LottoTicket {
 		int result = 0;
 		for (LottoBall lottoBall : lottoTicket) { //내가 산 티켓의 자릿수 한개
 			Optional<Integer> existNum = winningNum.stream()
-				.filter(eachDigitWinningNum -> Integer.toString(eachDigitWinningNum).equals(lottoBall.toString()))
+				.filter(eachDigitWinningNum -> eachDigitWinningNum == lottoBall.seeBallNum())
 				.findAny();
 			if (existNum.isPresent()) {
 				result += 1;
@@ -70,7 +70,7 @@ public class LottoTicket {
 	public String toString() {
 		String lottoTicketsToString = "[";
 		for (LottoBall lottoBall : lottoTicket) {
-			lottoTicketsToString += lottoBall.toString();
+			lottoTicketsToString += lottoBall.seeBallNum();
 			if (!(lottoBall.equals(lottoTicket.last()))) {
 				lottoTicketsToString += ", ";
 			}

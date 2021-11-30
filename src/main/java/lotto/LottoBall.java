@@ -24,8 +24,12 @@ public class LottoBall implements Comparable<LottoBall> {
 		return this.lottoBallNumber - lottoBall.lottoBallNumber;
 	}
 
-	@Override
-	public String toString() {
-		return Integer.toString(lottoBallNumber);
+	// @Override
+	// public String toString() {
+	// 	return Integer.toString(lottoBallNumber);
+	// }
+
+	public int seeBallNum() {
+		return lottoBallNumber;
 	}
 }
