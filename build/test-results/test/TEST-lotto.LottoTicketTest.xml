@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lotto.LottoTicketTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-30T06:41:43" hostname="gimtaehun-ui-MacBookPro.local" time="0.026">
+  <properties/>
+  <testcase name="로또 공이 6개가 주어지면 정상적으로 로직을 실행한다." classname="lotto.LottoTicketTest" time="0.017"/>
+  <testcase name="로또 공이 6개보다 많으면 에러를 반환한다." classname="lotto.LottoTicketTest" time="0.006"/>
+  <testcase name="로또 공이 6개보다 적으면 에러를 반환한다." classname="lotto.LottoTicketTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

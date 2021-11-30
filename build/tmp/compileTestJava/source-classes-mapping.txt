@@ -1,2 +1,4 @@
 lotto/LottoBallTest.java
  lotto.LottoBallTest
+lotto/LottoTicketTest.java
+ lotto.LottoTicketTest
