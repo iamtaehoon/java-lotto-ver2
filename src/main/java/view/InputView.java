@@ -1,10 +1,6 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-
-import lotto.LottoTicket;
 
 public class InputView {
 	private static Scanner sc = new Scanner(System.in);
