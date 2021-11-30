@@ -12,9 +12,13 @@ public class Player {
 	public void playLotto() {
 		inputMoney = InputView.putMoney();
 		totalLottoCnt = inputMoney / LOTTO_PRICE;
+		enterManualLottoCnt();
+		InputView.enterEachManualLottoTicket(manualLottoCnt);
+	}
+
+	private void enterManualLottoCnt() {
 		manualLottoCnt = InputView.enterManualLottoCnt();
 		validateTotalLottoCntIsBiggerThanManual();
-		InputView.enterEachManualLottoTicket(manualLottoCnt);
 	}
 
 	private void validateTotalLottoCntIsBiggerThanManual() {
