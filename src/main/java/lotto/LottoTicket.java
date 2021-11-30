@@ -63,9 +63,7 @@ public class LottoTicket {
 
 	public boolean hasBonusBall(int bonusBall) {
 		return lottoTicket.stream()
-			.filter(eachDigitLotto -> eachDigitLotto.toString().equals(Integer.toString(bonusBall)))
-			.findAny()
-			.isPresent();
+			.anyMatch(eachDigitLotto -> eachDigitLotto.toString().equals(Integer.toString(bonusBall)));
 	}
 
 	@Override
