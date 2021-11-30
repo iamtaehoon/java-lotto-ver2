@@ -11,8 +11,7 @@ class LottoTicketTest {
 	@Test
 	@DisplayName("로또 공이 6개가 주어지면 정상적으로 로직을 실행한다.")
 	void 로또_공의_개수는_6개_정상로직() {
-		String[] parameter = {"1", "2", "3", "4", "5", "6"};
-		LottoTicket lottoTicket = new LottoTicket(parameter);
+		LottoTicket lottoTicket = new LottoTicket(new String[] {"1", "2", "3", "4", "5", "6"});
 	}
 
 	@Test
@@ -42,5 +41,19 @@ class LottoTicketTest {
 		Assertions.assertThrows(IllegalArgumentException.class,
 			() -> new LottoTicket(new String[] {"1", "2", "3", "4", "5", "6", "6"}));
 	}
+	// TODO 자동으로 로또 번호를 찍을 때, 겹치지 않는가는 눈으로 확인함. 어떻게 이걸 확인해야 하지?
 
+	@Test
+	@DisplayName("로또 티켓이 양식에 맞게 만들어지는가를 검증한다.")
+	void 로또_티켓_String_으로_만들기() {
+		LottoTicket lottoTicket = new LottoTicket(new String[] {"1", "2", "3", "4", "5", "6"});
+		Assertions.assertEquals("[1, 2, 3, 4, 5, 6]",lottoTicket.toString()); //기대하는 값, 내가 만든 답
+	}
+
+	@Test
+	@DisplayName("로또 티켓이 양식에 맞게 만들어지는가 틀린 결과값을 사용해 오류를 낸다.")
+	void 로또_티켓_String_으로_만들기_정답_다르게() {
+		LottoTicket lottoTicket = new LottoTicket(new String[] {"1", "2", "3", "4", "5", "6"});
+		Assertions.assertNotEquals("[1, 2, 3, 4, 7, 6]",lottoTicket.toString());
+	}
 }

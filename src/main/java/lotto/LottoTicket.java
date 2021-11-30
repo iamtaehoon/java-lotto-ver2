@@ -46,4 +46,17 @@ public class LottoTicket {
 			throw new IllegalArgumentException("로또 티켓에는 6개의 번호가 적혀야 합니다.");
 		}
 	}
+
+	@Override
+	public String toString() {
+		String lottoTicketsToString = "[";
+		for (LottoBall lottoBall : lottoTicket) {
+			lottoTicketsToString += lottoBall.toString();
+			if (!(lottoBall.equals(lottoTicket.last()))) {
+				lottoTicketsToString += ", ";
+			}
+		}
+		lottoTicketsToString += "]";
+		return lottoTicketsToString;
+	}
 }

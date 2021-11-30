@@ -30,5 +30,4 @@ class LottoBallTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> new LottoBall(46));
 	}
 
-
 }
