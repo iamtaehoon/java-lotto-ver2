@@ -19,6 +19,7 @@ public class Player {
 		enterManualLottoCnt();
 		lottoTickets = InputView.enterEachManualLottoTicket(manualLottoCnt);
 		lottoMachine.makeAutoLottoTickets(totalLottoCnt - manualLottoCnt);
+		lottoMachine.showAllTickets();
 	}
 
 	private void enterManualLottoCnt() {
