@@ -63,7 +63,7 @@ public class LottoTicket {
 
 	public boolean hasBonusBall(int bonusBall) {
 		return lottoTicket.stream()
-			.anyMatch(eachDigitLotto -> eachDigitLotto.toString().equals(Integer.toString(bonusBall)));
+			.anyMatch(eachDigitLotto -> eachDigitLotto.seeBallNum() == bonusBall);
 	}
 
 	@Override

@@ -22,11 +22,15 @@ public class OutPutView {
 		// 2등인 경우에만 양식을 다르게 하는 로직이 필요함.
 		Arrays.stream(Rank.values())
 			.filter(rankLevel -> !rankLevel.equals(Rank.LOSE))
-			.forEach(rankLevel -> System.out.println(
-				String.format("%d개 일치 (%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
-					rankOfResult.get(rankLevel))));
-		// System.out.println(String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", Rank.SECOND.getHit(), Rank.SECOND.getReward(),
-		// 	rankOfResult.get(Rank.SECOND)));
-
+			.forEach(rankLevel -> {
+				if (rankLevel == Rank.SECOND) {
+					System.out.println(
+						String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
+							rankOfResult.get(rankLevel)));
+				} else {
+					System.out.println(String.format("%d개 일치 (%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
+						rankOfResult.get(rankLevel)));
+				}
+			});
 	}
 }
