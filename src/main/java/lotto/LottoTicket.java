@@ -48,23 +48,9 @@ public class LottoTicket {
 		}
 	}
 
-	@Override
-	public String toString() {
-		String lottoTicketsToString = "[";
-		for (LottoBall lottoBall : lottoTicket) {
-			lottoTicketsToString += lottoBall.toString();
-			if (!(lottoBall.equals(lottoTicket.last()))) {
-				lottoTicketsToString += ", ";
-			}
-		}
-		lottoTicketsToString += "]";
-		return lottoTicketsToString;
-	}
-
 	public int compareWinningNum(ArrayList<Integer> winningNum) {
 		int result = 0;
 		for (LottoBall lottoBall : lottoTicket) { //내가 산 티켓의 자릿수 한개
-			System.out.println(lottoBall.toString());
 			Optional<Integer> existNum = winningNum.stream()
 				.filter(eachDigitWinningNum -> Integer.toString(eachDigitWinningNum).equals(lottoBall.toString()))
 				.findAny();
@@ -80,5 +66,18 @@ public class LottoTicket {
 			.filter(eachDigitLotto -> eachDigitLotto.toString().equals(Integer.toString(bonusBall)))
 			.findAny()
 			.isPresent();
+	}
+
+	@Override
+	public String toString() {
+		String lottoTicketsToString = "[";
+		for (LottoBall lottoBall : lottoTicket) {
+			lottoTicketsToString += lottoBall.toString();
+			if (!(lottoBall.equals(lottoTicket.last()))) {
+				lottoTicketsToString += ", ";
+			}
+		}
+		lottoTicketsToString += "]";
+		return lottoTicketsToString;
 	}
 }

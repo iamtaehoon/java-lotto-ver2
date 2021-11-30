@@ -31,10 +31,7 @@ public class LottoMachine {
 	public void getResult() {
 		String[] inputWinningNum = InputView.enterWinningNum();
 		int bonusBall = InputView.enterBonusBall();
-
-		new LottoTicket(inputWinningNum); // 범위 제대로 들어가고 겹치지도 않았고
-		new LottoBall(bonusBall);
-
+		validateWinningNumAndBonusBall(inputWinningNum, bonusBall);
 		makeWinningNum(inputWinningNum);
 		for (LottoTicket lottoTicket : lottoTickets) {
 			int result = lottoTicket.compareWinningNum(winningNum);
@@ -45,6 +42,11 @@ public class LottoMachine {
 				}
 			}
 		}
+	}
+
+	private void validateWinningNumAndBonusBall(String[] inputWinningNum, int bonusBall) {
+		new LottoTicket(inputWinningNum); // 범위 제대로 들어가고 겹치지도 않았고
+		new LottoBall(bonusBall);
 	}
 
 	private void makeWinningNum(String[] inputWinningNum) {
