@@ -17,14 +17,15 @@ public class LottoMachine {
 	}
 
 	public void makeAutoLottoTickets(int autoLottoCnt) {
-		lottoTickets = new ArrayList<>();
+		System.out.println("lottoTickets = " + lottoTickets);
+
 		for (int i = 0; i < autoLottoCnt; i++) {
 			lottoTickets.add(new LottoTicket());
 		}
 	}
 
 	public void showAllTickets() {
-		lottoTickets.stream().forEach(x -> System.out.println("hell"));
+		lottoTickets.stream().forEach(lottoTicket -> OutPutView.showThisTicket(lottoTicket));
 
 	}
 }

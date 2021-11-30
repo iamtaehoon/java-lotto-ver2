@@ -10,14 +10,20 @@ public class Player {
 	private int inputMoney;
 	private int totalLottoCnt;
 	private int manualLottoCnt;
-	private ArrayList<LottoTicket> lottoTickets;
+	private ArrayList<LottoTicket> lottoTickets = new ArrayList<>();
 	private LottoMachine lottoMachine = new LottoMachine(lottoTickets);
 
 	public void playLotto() {
 		inputMoney = InputView.putMoney();
 		totalLottoCnt = inputMoney / LOTTO_PRICE;
 		enterManualLottoCnt();
-		lottoTickets = InputView.enterEachManualLottoTicket(manualLottoCnt);
+		// lottoTickets = InputView.enterEachManualLottoTicket(lottoTickets,manualLottoCnt);
+		InputView.enterEachManualLottoTicketMessage();
+		for (int i = 0; i < manualLottoCnt; i++) {
+			String[] eachLottoNumbers = InputView.splitTicketToEachNumber();
+			LottoTicket lottoTicket = new LottoTicket(eachLottoNumbers);
+			lottoTickets.add(lottoTicket);
+		}
 		lottoMachine.makeAutoLottoTickets(totalLottoCnt - manualLottoCnt);
 		lottoMachine.showAllTickets();
 	}

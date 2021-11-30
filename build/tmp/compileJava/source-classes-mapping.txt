@@ -1,13 +1,13 @@
-view/OutPutView.java
- view.OutPutView
 view/InputView.java
  view.InputView
+lotto/Application.java
+ lotto.Application
 lotto/LottoTicket.java
  lotto.LottoTicket
 lotto/LottoBall.java
  lotto.LottoBall
-lotto/Application.java
- lotto.Application
+view/OutPutView.java
+ view.OutPutView
 lotto/Player.java
  lotto.Player
 lotto/LottoMachine.java

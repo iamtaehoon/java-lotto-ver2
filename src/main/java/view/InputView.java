@@ -33,14 +33,11 @@ public class InputView {
 		return manualLottoCnt;
 	}
 
-	public static ArrayList<LottoTicket> enterEachManualLottoTicket(int manualLottoCnt) {
-		ArrayList<LottoTicket> tickets = new ArrayList<>();
+	public static void enterEachManualLottoTicketMessage() {
 		System.out.println("수동으로 구매할 번호를 입력해 주세요.");
-		for (int i = 0; i < manualLottoCnt; i++) {
-			String[] eachLottoNumbers = sc.nextLine().split(", ");
-			LottoTicket lottoTicket = new LottoTicket(eachLottoNumbers);
-			tickets.add(lottoTicket);
-		}
-		return tickets;
+	}
+
+	public static String[] splitTicketToEachNumber() {
+		return sc.nextLine().split(", ");
 	}
 }
