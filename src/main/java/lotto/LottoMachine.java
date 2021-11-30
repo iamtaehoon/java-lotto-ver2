@@ -1,10 +1,6 @@
 package lotto;
 
-import static lotto.LottoBall.*;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 import view.InputView;
 import view.OutPutView;
@@ -12,6 +8,7 @@ import view.OutPutView;
 public class LottoMachine {
 	ArrayList<LottoTicket> lottoTickets;
 	ArrayList<Integer> winningNum = new ArrayList<>();
+	Result result = new Result();
 
 	public LottoMachine(ArrayList<LottoTicket> lottoTickets) {
 		this.lottoTickets = lottoTickets;
@@ -34,10 +31,13 @@ public class LottoMachine {
 		validateWinningNumAndBonusBall(inputWinningNum, bonusBall);
 		makeWinningNum(inputWinningNum);
 		for (LottoTicket lottoTicket : lottoTickets) {
-			int result = lottoTicket.compareWinningNum(winningNum);
+			int matchingCnt = lottoTicket.compareWinningNum(winningNum);
 			boolean matchBonusBall = lottoTicket.hasBonusBall(bonusBall);
-			Rank rank = Rank.valueOf(result, matchBonusBall);
+			Rank rank = Rank.valueOf(matchingCnt, matchBonusBall);
+			result.addRank(rank);
 		}
+		result.getResult();
+
 	}
 
 	private void validateWinningNumAndBonusBall(String[] inputWinningNum, int bonusBall) {
