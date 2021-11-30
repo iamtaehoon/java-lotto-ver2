@@ -4,6 +4,7 @@ import static lotto.LottoBall.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
 import java.util.TreeSet;
 
@@ -58,5 +59,19 @@ public class LottoTicket {
 		}
 		lottoTicketsToString += "]";
 		return lottoTicketsToString;
+	}
+
+	public int compareWinningNum(ArrayList<Integer> winningNum) {
+		int result = 0;
+		for (LottoBall lottoBall : lottoTicket) { //내가 산 티켓의 자릿수 한개
+			System.out.println(lottoBall.toString());
+			Optional<Integer> existNum = winningNum.stream()
+				.filter(eachDigitWinningNum -> Integer.toString(eachDigitWinningNum).equals(lottoBall.toString()))
+				.findAny();
+			if (existNum.isPresent()) {
+				result += 1;
+			}
+		}
+		return result;
 	}
 }

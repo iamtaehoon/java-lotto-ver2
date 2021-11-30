@@ -40,4 +40,14 @@ public class InputView {
 	public static String[] splitTicketToEachNumber() {
 		return sc.nextLine().split(", ");
 	}
+
+	public static String[] enterWinningNum() {
+		System.out.println("지난 주 당첨 번호를 입력해 주세요.");
+		return sc.nextLine().split(", ");
+	}
+
+	public static int enterBonusBall() {
+		System.out.println("보너스 볼을 입력해 주세요.");
+		return Integer.parseInt(sc.nextLine());
+	}
 }

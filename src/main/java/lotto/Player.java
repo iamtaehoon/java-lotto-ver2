@@ -17,15 +17,23 @@ public class Player {
 		inputMoney = InputView.putMoney();
 		totalLottoCnt = inputMoney / LOTTO_PRICE;
 		enterManualLottoCnt();
-		// lottoTickets = InputView.enterEachManualLottoTicket(lottoTickets,manualLottoCnt);
 		InputView.enterEachManualLottoTicketMessage();
-		for (int i = 0; i < manualLottoCnt; i++) {
-			String[] eachLottoNumbers = InputView.splitTicketToEachNumber();
-			LottoTicket lottoTicket = new LottoTicket(eachLottoNumbers);
-			lottoTickets.add(lottoTicket);
-		}
+		makeManualLottoTickets();
 		lottoMachine.makeAutoLottoTickets(totalLottoCnt - manualLottoCnt);
-		lottoMachine.showAllTickets();
+		lottoMachine.showAllTickets(manualLottoCnt, totalLottoCnt-manualLottoCnt);
+		lottoMachine.getResult();
+	}
+
+	private void makeManualLottoTickets() {
+		for (int i = 0; i < manualLottoCnt; i++) {
+			makeEachManualLottoTicket();
+		}
+	}
+
+	private void makeEachManualLottoTicket() {
+		String[] eachLottoNumbers = InputView.splitTicketToEachNumber();
+		LottoTicket lottoTicket = new LottoTicket(eachLottoNumbers);
+		lottoTickets.add(lottoTicket);
 	}
 
 	private void enterManualLottoCnt() {
