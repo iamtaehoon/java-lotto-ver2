@@ -1,13 +1,18 @@
 package lotto;
 
+import static lotto.LottoBall.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.TreeSet;
 
 public class LottoTicket {
 	public static int BALL_CNT = 6;
 
 	private TreeSet<LottoBall> lottoTicket = new TreeSet<>();
+	Random random = new Random();
+
 
 	public LottoTicket(String[] eachLottoNumbers) {
 		errorIfInputTooMany(eachLottoNumbers);
@@ -16,6 +21,18 @@ public class LottoTicket {
 			lottoTicket.add(new LottoBall(eachLottoNumber));
 		}
 		validateBallCntIsCorrect();
+	}
+
+	public LottoTicket() {
+		makeLottoTicketAuto();
+	}
+
+	private void makeLottoTicketAuto() {
+		int ballNum;
+		while (lottoTicket.size() != BALL_CNT) {
+			ballNum = random.nextInt(MAX_LOTTO_NUM) + MIN_LOTTO_NUM;
+			lottoTicket.add(new LottoBall(ballNum));
+		}
 	}
 
 	private void errorIfInputTooMany(String[] eachLottoNumbers) {

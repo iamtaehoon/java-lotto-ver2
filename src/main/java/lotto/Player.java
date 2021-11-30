@@ -18,7 +18,7 @@ public class Player {
 		totalLottoCnt = inputMoney / LOTTO_PRICE;
 		enterManualLottoCnt();
 		lottoTickets = InputView.enterEachManualLottoTicket(manualLottoCnt);
-
+		lottoMachine.makeAutoLottoTickets(totalLottoCnt - manualLottoCnt);
 	}
 
 	private void enterManualLottoCnt() {
