@@ -27,12 +27,12 @@ public class LottoMachine {
 		lottoTickets.stream().forEach(lottoTicket -> OutPutView.showThisTicket(lottoTicket));
 	}
 
-	public void getResult() {
+	public int getResult() {
 		String[] inputWinningNum = InputView.enterWinningNum();
 		validateWinningNum(inputWinningNum);
 		makeWinningNum(inputWinningNum);
 		compareAllPurchasedTicketAndWinningNum();
-		OutPutView.getResult(results);
+		return OutPutView.getResult(results);
 
 	}
 

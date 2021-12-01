@@ -10,6 +10,8 @@ import lotto.Result;
 
 public class OutPutView {
 
+	private static int earnedMoney;
+
 	public static void showThisTicket(LottoTicket lottoTicket) {
 		System.out.println(lottoTicket.toString());
 	}
@@ -18,7 +20,7 @@ public class OutPutView {
 		System.out.println(String.format("수동으로 %d장, 자동으로 %d개를 구매했습니다.", manualCnt, autoCnt));
 	}
 
-	public static void getResult(ArrayList<Result> rankOfResult) {
+	public static int getResult(ArrayList<Result> rankOfResult) {
 		System.out.println("당첨 통계\n"
 			+ "---------");
 		// 스트림을 반대로 돌림. 근데 Lose는 포함하면 안됨. -> arrayList로 바꾸고 Collection.reverse 근데 그냥 Rank를 뒤집을래
@@ -27,14 +29,21 @@ public class OutPutView {
 		rankOfResult.stream()
 			.filter(result -> !result.equals(new Result(Rank.LOSE)))
 			.forEach(result -> System.out.println(showEachResult(result)));
+
+		return earnedMoney;
 	}
 
 	public static String showEachResult(Result result) {
 		Rank rank = result.getRank();
 		int countThisRank = result.getCountThisRank();
+		earnedMoney += countThisRank * rank.getReward();
 		if (rank == Rank.SECOND) {
 			return String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", rank.getHit(), rank.getReward(), countThisRank);
 		}
 		return String.format("%d개 일치 (%d원)- %d개", rank.getHit(), rank.getReward(), countThisRank);
+	}
+
+	public static void showProfitRatio(double profitRatio) {
+		System.out.println(String.format("총 수익률은 %.2f%%입니다.", profitRatio));
 	}
 }

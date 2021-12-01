@@ -3,15 +3,19 @@ package lotto;
 import java.util.ArrayList;
 
 import view.InputView;
+import view.OutPutView;
 
 public class Player {
 	public static int LOTTO_PRICE = 1000; //TODO : 상수 클래스로 나중에 이동
 
 	private int inputMoney;
+	private int earnedMoney;
+	private double profitRatio;
 	private int totalLottoCnt;
 	private int manualLottoCnt;
 	private ArrayList<LottoTicket> lottoTickets = new ArrayList<>();
 	private LottoMachine lottoMachine = new LottoMachine(lottoTickets);
+
 
 	public void playLotto() {
 		inputMoney = InputView.putMoney();
@@ -20,7 +24,9 @@ public class Player {
 		makeManualLottoTickets();
 		lottoMachine.makeAutoLottoTickets(totalLottoCnt - manualLottoCnt);
 		lottoMachine.showAllTickets(manualLottoCnt, totalLottoCnt-manualLottoCnt);
-		lottoMachine.getResult();
+		earnedMoney = lottoMachine.getResult();
+		profitRatio = (double)earnedMoney / inputMoney;
+		OutPutView.showProfitRatio(profitRatio);
 	}
 
 	private void makeManualLottoTickets() {
