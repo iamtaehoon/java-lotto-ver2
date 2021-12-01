@@ -2,20 +2,35 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 import view.OutPutView;
 
 public class Result {
-	HashMap<Rank, Integer> rankOfResult = new HashMap<>();
-	public Result() {
-		Arrays.stream(Rank.values()).forEach(rankLevel -> rankOfResult.put(rankLevel, 0));
+	Rank rank;
+	int countThisRank;
+
+	public Result(Rank rank) {
+		this.rank = rank;
+		this.countThisRank = 0;
 	}
 
-	public void addRank(Rank rank) {
-		rankOfResult.put(rank, rankOfResult.get(rank) + 1);
+	public void addCountThisRank() {
+		this.countThisRank += 1;
 	}
 
-	public void getResult() {
-		OutPutView.getResult(rankOfResult);
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Result result = (Result)o;
+		return rank == result.rank;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(rank);
 	}
 }

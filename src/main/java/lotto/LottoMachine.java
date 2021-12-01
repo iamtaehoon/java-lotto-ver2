@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import view.InputView;
 import view.OutPutView;
@@ -8,7 +9,7 @@ import view.OutPutView;
 public class LottoMachine {
 	ArrayList<LottoTicket> lottoTickets;
 	ArrayList<Integer> winningNum = new ArrayList<>();
-	Result result = new Result();
+	ArrayList<Result> results = new ArrayList<>();
 	int bonusBall;
 
 	public LottoMachine(ArrayList<LottoTicket> lottoTickets) {
@@ -31,14 +32,21 @@ public class LottoMachine {
 		validateWinningNum(inputWinningNum);
 		makeWinningNum(inputWinningNum);
 		compareAllPurchasedTicketAndWinningNum();
-		result.getResult();
-
+		// result.getResult();
+		for (Result result : results) {
+			System.out.println(result.countThisRank);
+		}
 	}
 
 	private void compareAllPurchasedTicketAndWinningNum() {
 		bonusBall = InputView.enterBonusBall();
 		validateBonusBall(bonusBall);
+		initializeResults();
 		compareEachTicketAndWinningNum();
+	}
+
+	private void initializeResults() {
+		Arrays.stream(Rank.values()).forEach(rank -> results.add(new Result(rank)));
 	}
 
 	private void compareEachTicketAndWinningNum() {
@@ -46,7 +54,7 @@ public class LottoMachine {
 			int matchingCnt = lottoTicket.compareWinningNum(winningNum);
 			boolean matchBonusBall = lottoTicket.hasBonusBall(bonusBall);
 			Rank rank = Rank.valueOf(matchingCnt, matchBonusBall);
-			result.addRank(rank);
+			results.get(results.indexOf(new Result(rank))).addCountThisRank();
 		}
 	}
 
