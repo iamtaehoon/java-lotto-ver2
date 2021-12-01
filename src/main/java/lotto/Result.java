@@ -19,6 +19,14 @@ public class Result {
 		this.countThisRank += 1;
 	}
 
+	public Rank getRank() {
+		return rank;
+	}
+
+	public int getCountThisRank() {
+		return countThisRank;
+	}
+
 	@Override
 	public String toString() {
 		return "Result{" +

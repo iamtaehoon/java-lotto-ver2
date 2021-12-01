@@ -9,6 +9,7 @@ import lotto.Rank;
 import lotto.Result;
 
 public class OutPutView {
+
 	public static void showThisTicket(LottoTicket lottoTicket) {
 		System.out.println(lottoTicket.toString());
 	}
@@ -23,22 +24,17 @@ public class OutPutView {
 		// 스트림을 반대로 돌림. 근데 Lose는 포함하면 안됨. -> arrayList로 바꾸고 Collection.reverse 근데 그냥 Rank를 뒤집을래
 		// 2등인 경우에만 양식을 다르게 하는 로직이 필요함.
 
-		rankOfResult.stream().filter(result -> !result.equals(new Result(Rank.LOSE))).forEach(result -> showEachResult(result));
+		rankOfResult.stream()
+			.filter(result -> !result.equals(new Result(Rank.LOSE)))
+			.forEach(result -> System.out.println(showEachResult(result)));
 	}
 
-	public static void showEachResult(Result result) {
-		System.out.println(result);
-		// Arrays.stream(Rank.values())
-		// 	.filter(rankLevel -> !rankLevel.equals(Rank.LOSE))
-		// 	.forEach(rankLevel -> {
-		// 		if (rankLevel == Rank.SECOND) {
-		// 			System.out.println(
-		// 				String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
-		// 					rankOfResult.get(rankLevel)));
-		// 		} else {
-		// 			System.out.println(String.format("%d개 일치 (%d원)- %d개", rankLevel.getHit(), rankLevel.getReward(),
-		// 				rankOfResult.get(rankLevel)));
-		// 		}
-		// 	});
+	public static String showEachResult(Result result) {
+		Rank rank = result.getRank();
+		int countThisRank = result.getCountThisRank();
+		if (rank == Rank.SECOND) {
+			return String.format("%d개 일치, 보너스 볼 일치(%d원)- %d개", rank.getHit(), rank.getReward(), countThisRank);
+		}
+		return String.format("%d개 일치 (%d원)- %d개", rank.getHit(), rank.getReward(), countThisRank);
 	}
 }
