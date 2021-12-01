@@ -32,10 +32,8 @@ public class LottoMachine {
 		validateWinningNum(inputWinningNum);
 		makeWinningNum(inputWinningNum);
 		compareAllPurchasedTicketAndWinningNum();
-		// result.getResult();
-		for (Result result : results) {
-			System.out.println(result.countThisRank);
-		}
+		OutPutView.getResult(results);
+
 	}
 
 	private void compareAllPurchasedTicketAndWinningNum() {

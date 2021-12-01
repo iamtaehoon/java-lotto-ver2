@@ -20,6 +20,15 @@ public class Result {
 	}
 
 	@Override
+	public String toString() {
+		return "Result{" +
+			"rank=" + rank +
+			", countThisRank=" + countThisRank +
+			'}';
+	}
+
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;

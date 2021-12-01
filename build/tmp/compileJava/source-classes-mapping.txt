@@ -8,11 +8,11 @@ lotto/LottoTicket.java
  lotto.LottoTicket
 lotto/Rank.java
  lotto.Rank
+lotto/Player.java
+ lotto.Player
 lotto/Result.java
  lotto.Result
 view/OutPutView.java
  view.OutPutView
-lotto/Player.java
- lotto.Player
 lotto/LottoMachine.java
  lotto.LottoMachine
